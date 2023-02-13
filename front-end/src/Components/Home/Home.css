@@ -1,0 +1,35 @@
+
+
+.theme-dark, .theme-light {
+  background-color: var(--backgroundColorB);
+  color: var(--textColor2);
+  /* color:var(--textColor8); */
+  
+}
+
+
+/* Main Header Start */
+
+.c-header-with-bg{
+  padding-top: 10rem;
+  background: var(--backgroundColorA);
+  background-position: -190px;
+  background-size: 100%;
+}
+.homesubtitle{
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.homesubtitle img{
+  width: 40px;
+}
+.homesubtitle span{
+  font-size      : 1.2rem;
+  font-weight    : 800;
+  text-decoration: none;
+  color          : #0e2431;
+}
+
+
+

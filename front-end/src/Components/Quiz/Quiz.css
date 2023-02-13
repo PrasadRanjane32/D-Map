@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@500&display=swap");
+
+body {
+    margin                 : 0;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    font-family: "Verdana", cursive, sans-serif;
+    /* color      : #ffffff; */
+}
+
+/* body {
+    background     : url("http://superdevresources.com/wp-content/uploads/2014/02/pattern-background.png");
+    font-family    : "Bree Serif", serif;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    min-height     : 100vh;
+} */
+
+.Qheader {
+    text-align: center;
+    color     : #4e1af7;
+}
+
+ .Qapp {
+    /* background     : linear-gradient(5deg, #a51dff 0%, #1a7df7 100%); */
+    margin: auto;
+    width          : max-content;
+    min-height     : 200px;
+    height         : min-content;
+    border-radius  : 2rem;
+    box-shadow     : 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+    display        : flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+    
+    background: #fff;
+    padding:  30px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+}
+
+.Qscore-section {
+    display    : flex;
+    font-size  : 24px;
+    align-items: center;
+}
+
+/* QUESTION/TIMER/LEFT SECTION */
+.Qquestion-section {
+    width   : 100%;
+    position: relative;
+    
+    font-size: 32px;
+}
+
+.Qquestion-count {
+    margin-bottom: 20px;
+}
+
+.Qquestion-count span {
+    font-size: 28px;
+}
+
+.Qheader .Qquestion-text {
+    margin-bottom: 12px;
+   
+}
+
+
+/* ANSWERS/RIGHT SECTION */
+.Qanswer-section {
+    width          : 100%;
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-between;
+    
+}
+
+.Q button {
+    width          : 100%;
+    height: auto;
+    font-size      : 24px;
+    color          : #000000;
+    /* background     : linear-gradient(#ff1dff 0%, #f7c01a 100%); */
+    background: #1a7df7;
+    border-radius  : 15px;
+    display        : flex;
+    padding        : 5px;
+    justify-content: center;
+    align-items    : center;
+    border         : 1px solid  #6f1af7;
+    cursor         : pointer;
+    margin: 0.8rem;
+}
+
+
+.Q button:hover {
+    background-color: #29ff25;
+    color: #fff;
+}
+
+.Q button:focus {
+    outline: none;
+}
+
+.Q button svg {
+    margin-right: 5px;
+}
+.restart{
+    color: #fff;
+    background: #1aff66;
+    border: 2px #000;
+}
+.quit{
+    color: #1aff66;
+    background: #fff;
+    border: 2px #000;
+
+}
+
+.result_box{
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    padding: 25px 30px;
+    width: 450px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+   
+    transition: all 0.3s ease;
+}
+
+.result_box .icon{
+    font-size: 100px;
+    color: #00ff99;
+    margin-bottom: 10px;
+}
+
+.result_box .complete_text{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.result_box .score_text span{
+    display: flex;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.result_box .score_text span p{
+    padding: 0 4px;
+    font-weight: 600;
+}
+
+.result_box .buttons{
+    display: flex;
+    margin: 20px 0;
+}
+
+.result_box .buttons button{
+    margin: 0 10px;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #009933;
+    transition: all 0.3s ease;
+}
+
+.restart{
+    color: #fff;
+    background: #1aff66;
+}
+
+.restart:hover{
+    background: #00b33c;
+}
+
+.quit{
+    color: #1aff66;
+    background: #fff;
+}
+
+.quit:hover{
+    color: #fff;
+    background: #00b33c;
+}
