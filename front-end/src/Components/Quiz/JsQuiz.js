@@ -8,39 +8,39 @@ function JsQuiz() {
 
     const questions = [
         {
-            questionText: 'Which of the following is used in React.js to increase performance?',
+            questionText: 'Javascript is an _______ language?',
             answerOptions: [
-                { answerText: 'Virtual DOM', isCorrect: true },
-                { answerText: 'Original DOM', isCorrect: false },
-                { answerText: 'Both A and B', isCorrect: false },
+                { answerText: 'Object-Oriented', isCorrect: true },
+                { answerText: 'Object-based', isCorrect: false },
+                { answerText: 'Procedural', isCorrect: false },
                 { answerText: 'None of the Above', isCorrect: false },
             ],
         },
         {
-            questionText: 'What is ReactJS',
+            questionText: 'Which of the following keywords is used to define a variable in Javascript?',
             answerOptions: [
-                { answerText: 'Server-side framework', isCorrect: false },
-                { answerText: 'User interface framework ', isCorrect: true },
-                { answerText: 'Both A and B ', isCorrect: false },
+                { answerText: 'var', isCorrect: false },
+                { answerText: 'let ', isCorrect: false },
+                { answerText: 'Both A and B ', isCorrect: true },
                 { answerText: ' None of the Above', isCorrect: false },
             ],
         },
         {
-            questionText: 'Identify the one which is used to pass data to components from outside',
+            questionText: 'Which of the following methods is used to access HTML elements using Javascript?',
             answerOptions: [
-                { answerText: 'Render with arguments', isCorrect: false },
-                { answerText: 'props', isCorrect: true },
-                { answerText: 'setState', isCorrect: false },
-                { answerText: 'PropTypes', isCorrect: false },
+                { answerText: 'getElementbyIs()', isCorrect: false },
+                { answerText: 'getElementsByClassName()', isCorrect: true },
+                { answerText: 'Both A and B ', isCorrect: true },
+                { answerText: ' None of the Above', isCorrect: false },
             ],
         },
         {
-            questionText: 'Who created React.js?',
+            questionText: 'Upon encountering empty statements, what does the Javascript Interpreter do?',
             answerOptions: [
-                { answerText: 'Jordan Mike', isCorrect: false },
-                { answerText: 'Jordan Walke', isCorrect: true },
-                { answerText: 'Time Lee', isCorrect: false },
-                { answerText: 'Jordan Lee', isCorrect: false },
+                { answerText: 'Throws an error', isCorrect: false },
+                { answerText: 'Ignores the statements', isCorrect: true },
+                { answerText: 'Gives a Warning', isCorrect: false },
+                { answerText: 'None of the Above', isCorrect: false },
             ],
         },
     ]

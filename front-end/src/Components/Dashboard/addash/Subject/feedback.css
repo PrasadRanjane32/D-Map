@@ -1,0 +1,103 @@
+@import url(https://fonts.googleapis.com/css2?family=Merriweather:wght@100;200;300;400;500;600;800;900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap);
+
+:root {
+  --dark: #110c22;
+  --bg: #dcdee9;
+  --primary: hsl(224, 100%, 62%);
+  --primary-dark: hsl(224, 100%, 65%);
+  --primary-light: hsl(224, 100%, 90%);
+  --primary-lighter: hsl(224, 100%, 95%);
+  --white: #ffffff;
+  --grey: hsl(0, 0%, 95%);
+  --grey-dark: hsl(0, 0%, 85%);
+  --grey-light: hsl(0, 0%, 97%);
+  --grey-lighter: hsl(0, 0%, 98%);
+  --green: hsl(153, 100%, 22%);
+  --green-light: hsl(153, 100%, 95%);
+  --red: hsl(0, 97%, 37%);
+  --red-light: hsl(0, 97%, 95%);
+  --ff-titles: "Merriweather", serif;
+  --ff-body: "IBM Plex Sans", sans-serif;
+}
+.feedbackbody{
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-wrap: wrap;
+    gap: 1.8rem;
+    
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 90%;
+    margin: auto;
+}
+main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+
+  max-width: fit-content;
+  width: 100%;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 16px;
+}
+
+
+.card-layout .content{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background: var(--white);
+    box-shadow: 0px 1px 4px 1px rgba(41, 50, 100, 0.801);
+    border-radius: 15px;
+    width: 100%;
+    max-width: fit-content;
+    text-align: center;
+    margin: auto;
+    /* overflow: hidden; */
+  }
+  
+  .layout-medium {
+    width: 500px;
+    height: auto;
+  }
+  
+
+    .layout-medium {
+      width: 90%;
+    }
+  
+    .layout-medium .content {
+      padding: 16px;
+    }
+  
+  .title {
+    font-family: var(--ff-titles);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 160%;
+    margin: 16px 0;
+    /* color: var(--dark); */
+  }
+  p {
+    font-family: var(--ff-body);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 160%;
+  
+    margin-bottom: 16px;
+    text-align: left;
+  }

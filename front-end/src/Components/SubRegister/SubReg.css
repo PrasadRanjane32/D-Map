@@ -1,0 +1,96 @@
+.subreg{
+    
+        margin: auto;
+        width          : 45%;
+      
+        height         : min-content;
+        border-radius  : 2rem;
+        box-shadow     : 2px 2px 10px 0px rgba(107, 191, 255, 0.75);
+       
+        justify-content: center;
+        align-items: center;
+        
+        background: #fff;
+        padding:  25px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.3s ease;
+    
+    
+}
+.subreg .form-btn {
+        float: center;
+        color: #fff;
+        font-size: 16px;
+        padding: 1rem 5rem;
+        border-radius: 50px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        box-shadow: 0px 4px 20px 0px #49c628a6;
+        background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+      }
+      .subreg .form-btn:hover {
+        float: center;
+        color: #fff;
+        font-size: 16px;
+        padding: 1rem 5rem;
+        border-radius: 50px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        box-shadow: 0px 4px 20px 0px #1a6107a6;
+        background-image: linear-gradient(135deg, #1ff01f 10%, #2d8118 100%);
+      }
+      .register-form .btn{
+        justify-content: space-between;
+        float: center;
+        color: #fff;
+        font-size: 16px;
+        padding: 1rem;
+        padding-bottom: 2.5rem;
+        /* border-radius: 50px; */
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        box-shadow: 0px 4px 20px 0px #49c628a6;
+        background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+      }
+      .register-form .btn:hover{
+        float: center;
+        color: #fff;
+        font-size: 16px;
+        padding: 1rem;
+        padding-bottom: 2.5rem;
+        border-radius: 50px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        box-shadow: 0px 4px 20px 0px #1a6107a6;
+        background-image: linear-gradient(135deg, #1ff01f 10%, #2d8118 100%)!important;
+      }
+      .signin .form-btn {
+        float: center;
+        color: #fff;
+        font-size: 16px;
+        padding: 1rem 5rem;
+        border-radius: 50px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        box-shadow: 0px 4px 20px 0px #49c628a6;
+        background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+      }
+      .signin .form-btn:hover {
+        float: center;
+        color: #fff;
+        font-size: 16px;
+        padding: 1rem 5rem;
+        border-radius: 50px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        box-shadow: 0px 4px 20px 0px #1a6107a6;
+        background-image: linear-gradient(135deg, #1ff01f 10%, #2d8118 100%);
+      }

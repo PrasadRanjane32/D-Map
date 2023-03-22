@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './About.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Loadings from '../LoadingPage/Loading'
+
 
 const About = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
+  const [loading, setloading] = useState(true);
 
   const callAboutPage = async () => {
+
     try {
       const res = await fetch("/about", {
         method: "GET",
@@ -23,6 +27,8 @@ const About = () => {
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
+      }else{
+        setloading(false);
       }
 
 
@@ -39,8 +45,19 @@ const About = () => {
     callAboutPage();
 
   }, []);
+  if(loading){
+    return(
+      <>
+  
+      <Loadings/>
+      </>
+    )
+  }else{
+  
+
   return (
     <>
+    <div className='body'>
       <div className='About '>
         <div className="container">
           <form method='GET'>
@@ -68,8 +85,9 @@ const About = () => {
               </div>
 
               <div className='col-md-2'>
-                <input type='submit' className='edit-btn' name='btnAddMore' value='Edit Profile' />
-              </div>
+                {/* <input type='submit' className='edit-btn' name='btnAddMore' to="/EditeProfile"/> */}
+                <Link  className='edit-btn' to='/EditProfile'>Update</Link>
+                              </div>
 
             </div>
             <div className='row'>
@@ -162,7 +180,9 @@ const About = () => {
           </form>
         </div>
       </div>
+      </div>
     </>)
+}
 }
 
 export default About

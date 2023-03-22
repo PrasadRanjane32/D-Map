@@ -1,13 +1,72 @@
-import React, { useState } from 'react'
-import allskills from '../../Assets/Projects/allSkills.json'
-
+import React, { useEffect, useState } from 'react'
+import {useNavigate} from 'react-router-dom'
+import {useCookies} from 'react-cookie';
+import Loading from '../LoadingPage/Loading';
 
 const LangPage = () => {
+    const navigate = useNavigate();
+    const [sname, setSname] = useState();
+    const[loading,setloading]=useState(true); 
+    const[subcookie,setSubcookie]=useCookies(['user']);
+    const callCourse = async () => {
+        try {
+        const res = await fetch("/getsubData", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        });
+        // console.log(res.json());
+        
+        const data = await res.json();
+        console.log(data);
+        setSname(data);
+        console.log(sname);
+        if(data!==undefined){
+            setloading(false);
+        }
+        if (!res.status === 200) {
+            const error = new Error(res.error);
+            throw error;
+        }
+        
+  
+}
+      catch (err) {
+        console.log(err);
+        // navigate("/Login");
+      }
+    }
     
-            const [sname, setSname] = useState(allskills);
+   
 
-            return (
+
+    const handle= (subjectID)=>{
+setSubcookie('Subjectid',subjectID,{path:'/'});
+localStorage.setItem('Subjectid', JSON.stringify(subjectID))
+navigate('/subjectd')
+
+    }
+
+    useEffect(() => {
+  
+        callCourse();
+  
+    }, []);
+    if(loading){
+       return(
+        <>
+<Loading />
+            
+        </>
+       )
+    }else{
+
+        
+        return (
             <>
+            <div className='body'>
                 <section id="skills" className='skills tracks-section pt-40 md:pt-56 mb-40 md:mb-56'>
                     <div className='lg-container'>
                         <div className='section-header items-center self-center mb-8 md:mb-12'>
@@ -19,22 +78,44 @@ const LangPage = () => {
                                 programming languages
                             </h2>
                         </div>
+                        <hr/>
+                        {/* Categories languages block */}
+                        {/* <div className='section-header items-center self-center mb-8 md:mb-12'>
+                            <h2 className='text-h4 text-center'>
+                                <strong> Role Based</strong>
+                               Roadmap
+                                <br />
+                            </h2>
+                        </div> */}
+
+                       
+
+                        {/* //all languages below */}
+                        <div className='section-header items-center self-center mb-8 md:mb-12'>
+                            <h2 className='text-h4 text-center'>
+                            Skill based Roadmaps
+                                <br />
+                            </h2>
+                        </div>
+
 
                         <section className="skills" id="skills">
                             <div className="container">
                                 <div className="row" id="skillsContainer">
                                     {sname.map((curElem) => {
-                                        const { id, name, icon, link } = curElem;
+                                        const { _id, subjectname, icon, link } = curElem;
                                         return (
                                             <>
-                                                <a href={curElem.link} target="_self">
+                                            {/* href={curElem.link}  target="_self"*/}
+                                                <a  onClick={()=>{handle(_id)}} key={_id}>
                                                     <div className="bar">
                                                         <div className="info">
-                                                            <img alt={name} src={icon} />
-                                                            <div className='title'>{name}</div>
+                                                            <img alt={subjectname} src={icon} />
+                                                            <div className='title'>{subjectname}</div>
                                                         </div>
                                                     </div>
                                                 </a>
+                                                
                                             </>
                                         )
                                     })}
@@ -43,9 +124,11 @@ const LangPage = () => {
                         </section>
                     </div>
                 </section>
+                </div>
             </>
             )
+        }
 
 }
 
-export default LangPage
+export default LangPage;

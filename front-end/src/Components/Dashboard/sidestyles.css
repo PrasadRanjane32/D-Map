@@ -1,0 +1,174 @@
+.dashboard {
+    position      : relative;
+    width         : 100%;
+    padding       : 2rem;
+    padding-bottom: 5rem;
+
+}
+
+.body {
+    margin: auto;
+    padding: 5rem;
+    width     : 100mvh;
+    /* background: linear-gradient(to bottom right, #78009cdb, #3A0CA3, #4361EE, #d08aff); */
+/* background-color: #df0073; */
+background-image: url('../../Assets/Images/scattered-forcefields.svg');
+}
+
+.d1 {
+    display       : flex;
+    flex-direction: column;
+    gap           : 1rem;
+
+}
+
+.d1 .d1c1 {
+    display         : flex;
+    width           : 100%;
+    flex-direction  : column;
+    background-color: rgba(147, 251, 255, 0.655);
+    padding         : 5rem;
+    border-radius   : 5rem 0;
+    border          : 1px solid #fff;
+    backdrop-filter : blur(3px);
+
+}
+
+.d1c1 h4 {
+    font-size: xx-large;
+    color: rgb(42, 0, 80);
+}
+
+.d1 .c1 img {
+    width: 10%;
+    mix-blend-mode: multiply;
+    filter: contrast(1);
+  
+}
+.d1 .c1 .btns img {
+    width: 42%;
+   margin: auto;
+    border: 0;
+    align-self:center ;
+    mix-blend-mode: multiply;
+    filter: contrast(1);
+  
+}
+.d1c1 .btns{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+   
+color: #3A0CA3;
+}
+
+
+.d1c1 tr .bdel{
+background-color:#ff2643 ;
+}
+.d1c1 tr .bedit{
+
+  background-color: #37ff1c;
+
+}
+
+.d1 .c1 {
+
+    width          : 100%;
+    margin         : 0.5rem;
+    position       : relative;
+    display        : flex;
+}
+.d1 .c1:hover {
+
+    
+    box-shadow: 0 0 20px 6px #090b6f85;
+    color          : rgb(94, 94, 255);
+
+
+}
+
+.d1 .c1 i {
+    color: #4361EE;
+}
+
+.d1 .d1c1 h2 {
+    position       : relative;
+    display        : flex;
+    align-items    : left;
+    justify-content: start;
+    font-size      : x-large;
+    font-weight    : 800;
+    text-decoration: none;
+    border         : 0;
+    gap            : 1.2rem;
+    color          : darkblue;
+
+
+
+}
+.d1 .d1c1 h2:hover {
+    position       : relative;
+    display        : flex;
+    align-items    : left;
+    justify-content: start;
+    font-size      : x-large;
+    font-weight    : 800;
+    text-decoration: none;
+    border         : 0;
+    gap            : 1.2rem;
+    color          : rgb(94, 94, 255);
+
+
+
+}
+.d1 .d1c1 h2 span {
+    position       : relative;
+    display        : flex;
+    align-items    : left;
+    justify-content: start;
+    font-size      : xX-large;
+    font-weight    : 800;
+    text-decoration: none;
+    border         : 0;
+    gap            : 1.2rem;
+    color          : rgb(0, 117, 152);
+
+
+
+}
+
+.d2 {
+    width           : 100%;
+    padding         : 2rem;
+    display         : flex;
+    flex-direction  : column;
+    background-color: rgba(255, 255, 255, 0.686);
+    justify-content : center;
+    float           : center;
+    align-items     : center;
+    border-radius   : 0 5rem;
+    border          : 1px solid #fff;
+    backdrop-filter : blur(3px);
+
+}
+
+.d2 .c2 {
+    width : 95%;
+    margin: auto;
+}
+.back{
+    color: #d08aff;
+   
+    border-radius: 5rem;
+    background-color: #d08aff;
+}
+.back h2{
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    justify-content: space-evenly;
+    font-weight: 900;
+    color: #ffff;
+}

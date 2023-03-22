@@ -4,19 +4,54 @@
   margin:0px;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  background: linear-gradient(to  bottom right, #78009cdb , #150638);
-  padding:6.55rem;
-
+  filter: blur();
 
  
+}
+.signin .form-btn:hover{
+  
+  float: right;
+  color: #fff;
+  font-size: 16px;
+  padding: 0.6rem 0 !important;
+  border-radius: 50px;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  box-shadow: 0px 4px 20px 0px #1a6107a6;
+  background-image: linear-gradient(135deg, #1ff01f 10%, #2d8118 100%);
 }
 
 .signup{
   margin:0px;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  background: linear-gradient(to  bottom right, #78009cdb , #150638);
-  padding: 26.5px 21px;
+ 
+}
+.signup .form-btn {
+  float: right;
+  color: #fff;
+  font-size: 16px;
+  padding: 1rem 5rem;
+  border-radius: 50px;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  box-shadow: 0px 4px 20px 0px #49c628a6;
+  background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+}
+.signup .form-btn:hover{
+  
+  float: right;
+  color: #fff;
+  font-size: 16px;
+  /* padding: 12px 35px; */
+  border-radius: 50px;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  box-shadow: 0px 4px 20px 0px #1a6107a6;
+  background-image: linear-gradient(135deg, #1ff01f 10%, #2d8118 100%);
 }
 .main-wrap{
   position: relative;
@@ -72,7 +107,7 @@ margin-top: auto;
   margin-top:16px;
   border:0.1rem solid rgb(208, 128, 255);
   color:rgb(80, 246, 255);
-  background: linear-gradient(to  bottom left, #d08aff , #3A0CA3); ;
+  background: linear-gradient(to  bottom left, #d08aff , #3A0CA3); 
 
 }
 .form-group .form-btn:hover{

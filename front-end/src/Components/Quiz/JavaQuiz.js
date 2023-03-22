@@ -8,39 +8,39 @@ function JavaQuiz() {
 
     const questions = [
         {
-            questionText: 'Which of the following is used in React.js to increase performance?',
+            questionText: 'Number of primitive data types in Java are?',
             answerOptions: [
-                { answerText: 'Virtual DOM', isCorrect: true },
-                { answerText: 'Original DOM', isCorrect: false },
-                { answerText: 'Both A and B', isCorrect: false },
-                { answerText: 'None of the Above', isCorrect: false },
+                { answerText: '8', isCorrect: true },
+                { answerText: '7', isCorrect: false },
+                { answerText: '6', isCorrect: false },
+                { answerText: '9', isCorrect: false },
             ],
         },
         {
-            questionText: 'What is ReactJS',
+            questionText: 'What is the size of float and double in java?',
             answerOptions: [
-                { answerText: 'Server-side framework', isCorrect: false },
-                { answerText: 'User interface framework ', isCorrect: true },
-                { answerText: 'Both A and B ', isCorrect: false },
-                { answerText: ' None of the Above', isCorrect: false },
+                { answerText: '32 and 32', isCorrect: false },
+                { answerText: '32 and 64', isCorrect: true },
+                { answerText: '64 and 64', isCorrect: false },
+                { answerText: '64 and 32', isCorrect: false },
             ],
         },
         {
-            questionText: 'Identify the one which is used to pass data to components from outside',
+            questionText: 'Automatic type conversion is possible in which of the possible cases?',
             answerOptions: [
-                { answerText: 'Render with arguments', isCorrect: false },
-                { answerText: 'props', isCorrect: true },
-                { answerText: 'setState', isCorrect: false },
-                { answerText: 'PropTypes', isCorrect: false },
+                { answerText: 'Bute to Int', isCorrect: false },
+                { answerText: 'Int to Long', isCorrect: true },
+                { answerText: 'Long to Int', isCorrect: false },
+                { answerText: 'Short to Int', isCorrect: false },
             ],
         },
         {
-            questionText: 'Who created React.js?',
+            questionText: 'Select the valid statement.',
             answerOptions: [
-                { answerText: 'Jordan Mike', isCorrect: false },
-                { answerText: 'Jordan Walke', isCorrect: true },
-                { answerText: 'Time Lee', isCorrect: false },
-                { answerText: 'Jordan Lee', isCorrect: false },
+                { answerText: 'char[] ch = new char(5)', isCorrect: false },
+                { answerText: 'char[] ch = new char[5]', isCorrect: true },
+                { answerText: 'char[] ch = new char()', isCorrect: false },
+                { answerText: 'char[] ch = new char[]', isCorrect: false },
             ],
         },
     ]

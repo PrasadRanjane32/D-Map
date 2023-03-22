@@ -1,0 +1,142 @@
+.mview{
+    margin: auto;
+    width          : 95%;
+    min-height     : 200px;
+    height         : min-content;
+    border-radius  : 2rem;
+    box-shadow     : 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+    display        : flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+   
+    margin-bottom: 10rem;
+    
+    background: #fff;
+    padding:  30px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.mbutton{
+    width: 90%;
+  border-radius:30px 100px;
+  padding:3px;
+  cursor:pointer;
+  font-weight:600;
+  margin-top:16px;
+  border:0.1rem solid rgb(208, 128, 255);
+  color:rgb(80, 246, 255);
+  background: linear-gradient(to  bottom left, #d08aff , #3A0CA3); 
+}
+#tf-main{
+  margin: auto;
+  width          : 95%;
+  min-height     : 200px;
+  height         : min-content;
+  border-radius  : 2rem;
+  box-shadow     : 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+  display        : flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+ 
+  margin-bottom: 10rem;
+  
+  background: #fff;
+  padding:  30px;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.accordion {
+  border: 5px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 50px;
+  margin: 5px;
+  width: 60%;
+
+
+}
+.vaccine-list{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items:center;
+}
+
+
+.accordion_item + .accordion_item {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  
+}
+
+.accordion__button {
+  background-color:  #e7f1ff !important;
+  color: #0c63e4 !important;
+  cursor: pointer;
+  padding: 18px;
+  border-radius: 50px;
+ 
+  text-align: left;
+  border: none;
+}
+
+.accordion__button:hover {
+  background-color: #0c63e4 ;
+  
+}
+
+.accordion__button:before {
+  display: inline-block;
+  content: '';
+  height: 10px;
+  width: 10px;
+  margin-right: 12px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.accordion__button[aria-expanded='true']::before,
+.accordion__button[aria-selected='true']::before {
+  transform: rotate(45deg);
+}
+
+[hidden] {
+  display: none;
+}
+
+.accordion__panel {
+  padding: 20px;
+  border: 1px solid rgb(109, 157, 255) ;
+
+  border-radius:  1.9rem  1.9rem  ;
+  animation: fadein 0.35s ease-in;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+.absolute-right{
+display: flex;
+justify-content: center;
+width: 30%;
+align-self: center;
+margin:auto;
+flex-direction: column;
+
+
+ 
+}

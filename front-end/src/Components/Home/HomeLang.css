@@ -2,14 +2,16 @@
  */
 
 #skills {
-    min-height: 50vh;
+    min-height: auto;
     /* background: linear-gradient(to bottom, #350166, rgb(44, 0, 76), #480158); */
     /* background: linear-gradient(to left, #ffb561,  #dc7d01); */
     background: var(--backgroundColorB);
+   
     
 
 
   } 
+ 
   .skills .container {
     background: rgb(25, 25, 25);
     color: #6a93ff;
@@ -17,7 +19,7 @@
     padding: 2rem;
     width: 90%;
     margin: auto;
-  
+
     box-shadow      : 0 0.2rem 2rem rgba(15, 83, 255, 0.426);
   }
   .skills .container .row {

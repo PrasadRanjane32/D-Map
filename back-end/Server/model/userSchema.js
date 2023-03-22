@@ -59,6 +59,14 @@ const userSchema = new mongoose.Schema({
             }
 
         }
+    ],
+    enrolled: [
+        {
+            ensub: {
+                type: String
+            }
+
+        }
     ]
 })
 
@@ -104,7 +112,18 @@ userSchema.methods.addMessage = async function (name, email, phone, message) {
 }
 
 
+//enrolling the subject 
+userSchema.methods.addEnroll = async function (token) {
+    try {
 
+        this.enrolled = this.enrolled.concat({ ensub:token});
+        await this.save();
+        return this.enrolled;
+
+    }catch (error) {
+        console.log(error);
+    }
+}
 //collection creation
 const User = mongoose.model('USER', userSchema);
 module.exports = User;

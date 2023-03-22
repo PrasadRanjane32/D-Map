@@ -7,35 +7,35 @@ function CssQuiz() {
     const [start, setStart] = useState(false);
 
     const questions = [
-        {
-            questionText: 'Which of the following is used in React.js to increase performance?',
+        {    
+            questionText: 'The full form of CSS is:',
             answerOptions: [
-                { answerText: 'Virtual DOM', isCorrect: true },
-                { answerText: 'Original DOM', isCorrect: false },
-                { answerText: 'Both A and B', isCorrect: false },
+                { answerText: 'Cascading Style Sheets', isCorrect: true },
+                { answerText: 'Coloured Special Sheets', isCorrect: false },
+                { answerText: 'Color and Style Sheets', isCorrect: false },
                 { answerText: 'None of the Above', isCorrect: false },
             ],
         },
         {
-            questionText: 'What is ReactJS',
+            questionText: 'How can we change the background color of an element?',
             answerOptions: [
-                { answerText: 'Server-side framework', isCorrect: false },
-                { answerText: 'User interface framework ', isCorrect: true },
+                { answerText: 'Background-color', isCorrect: true  },
+                { answerText: 'Color ', isCorrect: false },
                 { answerText: 'Both A and B ', isCorrect: false },
                 { answerText: ' None of the Above', isCorrect: false },
             ],
         },
         {
-            questionText: 'Identify the one which is used to pass data to components from outside',
+            questionText: 'How can we change the text color of an element?',
             answerOptions: [
-                { answerText: 'Render with arguments', isCorrect: false },
-                { answerText: 'props', isCorrect: true },
-                { answerText: 'setState', isCorrect: false },
-                { answerText: 'PropTypes', isCorrect: false },
+                { answerText: '1', isCorrect: false  },
+                { answerText: '2', isCorrect: false },
+                { answerText: '3', isCorrect: true },
+                { answerText: '4', isCorrect: false },
             ],
         },
         {
-            questionText: 'Who created React.js?',
+            questionText: 'In how many ways can CSS be written in?',
             answerOptions: [
                 { answerText: 'Jordan Mike', isCorrect: false },
                 { answerText: 'Jordan Walke', isCorrect: true },

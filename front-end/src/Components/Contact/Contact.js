@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import './Contact.css'
 import contact from '../../Assets/Images/contact.png'
 import { useNavigate } from 'react-router-dom'
+import Loadings from '../LoadingPage/Loading'
 
 const Contact = () => {
   const navigate = useNavigate();
+  const [loading, setloading] = useState(true);
   const [userData, setUserData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const callContactPage = async () => {
@@ -20,7 +22,11 @@ const Contact = () => {
 
       const data = await res.json();
       console.log(data);
-      setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
+      if(data!=undefined){
+
+        setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
+        setloading(false)
+      }
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -73,10 +79,17 @@ const Contact = () => {
 
   }
 
-
+  if (loading) {
+    return(
+        <>
+        <Loadings/>
+        </>
+    )
+} else {
 
   return (
     <>
+    <div className='body'>
       <section className="contact" id="contact">
 
 
@@ -124,8 +137,10 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      </div>
     </>
   )
+}
 }
 
 export default Contact

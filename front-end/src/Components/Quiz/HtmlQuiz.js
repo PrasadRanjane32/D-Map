@@ -8,39 +8,39 @@ function HtmlQuiz() {
 
     const questions = [
         {
-            questionText: 'Which of the following is used in React.js to increase performance?',
+            questionText: 'What does the abbreviation HTML stand for?',
             answerOptions: [
-                { answerText: 'Virtual DOM', isCorrect: true },
-                { answerText: 'Original DOM', isCorrect: false },
-                { answerText: 'Both A and B', isCorrect: false },
+                { answerText: 'HyperText Markup Language', isCorrect: true },
+                { answerText: 'HightText Markup Language', isCorrect: false },
+                { answerText: 'HyperText Markdown Language', isCorrect: false },
                 { answerText: 'None of the Above', isCorrect: false },
             ],
         },
         {
-            questionText: 'What is ReactJS',
+            questionText: 'How many sizes of headers are available in HTML by default?',
             answerOptions: [
-                { answerText: 'Server-side framework', isCorrect: false },
-                { answerText: 'User interface framework ', isCorrect: true },
-                { answerText: 'Both A and B ', isCorrect: false },
-                { answerText: ' None of the Above', isCorrect: false },
+                { answerText: '5', isCorrect: false },
+                { answerText: '1', isCorrect: false },
+                { answerText: '3', isCorrect: false },
+                { answerText: '6', isCorrect: true },
             ],
         },
         {
-            questionText: 'Identify the one which is used to pass data to components from outside',
+            questionText: 'What is the smallest header in HTML by default?',
             answerOptions: [
-                { answerText: 'Render with arguments', isCorrect: false },
-                { answerText: 'props', isCorrect: true },
-                { answerText: 'setState', isCorrect: false },
-                { answerText: 'PropTypes', isCorrect: false },
+                { answerText: 'h1', isCorrect: false },
+                { answerText: 'h2', isCorrect: false },
+                { answerText: 'h6', isCorrect: true },
+                { answerText: 'h4', isCorrect: false },
             ],
         },
         {
-            questionText: 'Who created React.js?',
+            questionText: 'What are the types of lists available in HTML?',
             answerOptions: [
-                { answerText: 'Jordan Mike', isCorrect: false },
-                { answerText: 'Jordan Walke', isCorrect: true },
-                { answerText: 'Time Lee', isCorrect: false },
-                { answerText: 'Jordan Lee', isCorrect: false },
+                { answerText: 'Ordered,Unordered Lists', isCorrect: true },
+                { answerText: 'Bulleted,Numbered Lists', isCorrect: false },
+                { answerText: 'Named,Unnamed Lists', isCorrect: false },
+                { answerText: 'None of Above', isCorrect: false },
             ],
         },
     ]

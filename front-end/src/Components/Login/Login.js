@@ -1,8 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import signin from '../../Assets/Images/contact1.png'
+import './Login.css'
 import { UserContext } from '../../App'
+import "react-toastify/dist/ReactToastify.css";
+import { notifyToast } from "../../Toastify/notifyToast";
+import {useCookies} from 'react-cookie';
+
+
+
+
 const Login = () => {
+    const[Usercookie,setUsercookie]=useCookies(['user']);
 
     const {state, dispatch} = useContext(UserContext);
 
@@ -28,13 +37,26 @@ const Login = () => {
                 email, password
             })
         })
-        
+        const Userd= await res.json();
+       console.log(Userd);
+
         if ((await res).status === 400) {
-            window.alert("Inavalid Credential");
+            // window.alert("Inavalid Credential");
+            console.log(res);
+            notifyToast("Inavalid Credential","error");
             
-        } else {
-            dispatch({type:"USER", payload:true})
-            window.alert("Login Successfull");
+            
+        }else  if((await res).status === 201){
+            dispatch({type:"USER", payload:true});
+            notifyToast("Welcome back Admin ","success" );
+            localStorage.setItem('username', JSON.stringify(Userd))
+            navigate("/Dashboard");
+            console.log(res);
+        }        
+        else {
+            dispatch({type:"USER", payload:true});
+            notifyToast("Successful Login","success");
+            localStorage.setItem('username', JSON.stringify(Userd))
             navigate("/");
             console.log(res);
             
@@ -44,26 +66,25 @@ const Login = () => {
 
     return (
 
-        <>
-            <div className='signin'>
+    <div className='body'>
+
+    
+        <div className='signin'>
+            <div className='box-form mt-5 mb-5 ' >
+                              
                 <div className="container main-wrap mb-5">
-                    <div className='row  d-flex align-items-center justify-content-center '>
 
 
-                        <div className='col-md-6'>
-                            <div className='card  px-5 py-5'>
-
-
-                                <div className='mt-3 '>
-
+                                <div className='mt-5 right '>
+	
                                     <div className='col-md-6 text-center'>
 
-                                        <h2 className="row form-title text-center h1 fw-bold mb-5 mx-1 mx-md-6 mt-2"> Sign In</h2>
+                                        <h5 className="row form-title text-center mb-5 mx-1 mx-md-6 mt-2"> Login</h5>
 
                                     </div>
                                     <form method="POST">
 
-                                        <div className='form-input mb-3'>
+                                        <div className='form-input'>
 
                                             <i className="bi bi-envelope-at-fill"></i>
 
@@ -72,30 +93,29 @@ const Login = () => {
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 placeholder="Your Email" className='w-100 form-control border-0 border-bottom border-info' />
                                         </div>
-                                        <div className='form-input mb-3'>
+                                        <div className='form-input'>
                                             <label htmlfor="password">
-                                                <i className="bi bi-key-fill me-3"></i>
+                                                <i className="bi bi-key-fill"></i>
                                             </label>
                                             <input type="password" name="password" id="password" autocomplete="off"
                                                 value={password}
                                                 onChange={(e) => setpassword(e.target.value)}
                                                 placeholder="Your Password" className='w-100 form-control border-0 border-bottom border-info' />
                                         </div>
-                                        <div className='form-group'>
-                                            <div className='form-btn  text-center fw-bold'>
-                                                <input type="submit" name="signin" id="signin" className='form-submit'
+                                        <div className='form-group row g-3 '>
+                                            <div className=' text-center fw-bold col-md-12'>
+                                                <input type="submit" name="signin" id="signin" className='form-btn form-submit'
                                                     value="Log In"
                                                     onClick={loginUser}
-                                                />
+                                                /><br/>
                                             </div>
-                                            <Link to='/Signup' className='sub-title' style={{ "text-decoration": 'none', "color": 'steelblue', "marginLeft": '5rem', "textSizeAdjust": 'auto' }}> Create an Account.</Link>
                                         </div>
+                                            <Link to='/Signup' className='new-act sub-title '> Create New Account...?</Link>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    {/* </div> */}
 
 
                     {/* <div className="card text-black  form-wrap" style={{ borderRadius: '25px' }}>
@@ -141,9 +161,10 @@ const Login = () => {
                         </div>
                     </div>
                 </div> */}
-                </div>
-            </div>
-        </>
+                {/* </div>
+            </div> */}
+        </div>
+        </div>
     )
 }
 
