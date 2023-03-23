@@ -12,7 +12,7 @@ const subjectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    about:{
+    about: {
         type: String,
         required: true
     },
@@ -56,51 +56,22 @@ const subjectSchema = new mongoose.Schema({
             }
         }
     ],
-    mcqText: [
-        {
-            mcq:[{
-
-                questionText: {
-                    type: String
-                },
-                answerOptions: [
-                    {
-                        answerText1: {
-                            type: String
-                        },
-                        isCorrect1:{
-                            type:String
-                        },
-                        answerText2: {
-                            type: String
-                        },
-                        isCorrect2:{
-                            type:String
-                        },
-                        answerText2: {
-                            type: String
-                        },
-                        isCorrect2:{
-                            type:String
-                        },
-                        answerText3: {
-                            type: String
-                        },
-                        isCorrect3:{
-                            type:String
-                        },
-                        answerText4: {
-                            type: String
-                        },
-                        isCorrect4:{
-                            type:String
-                        },
-                    }
-                ]
-            }]
-    }
-    ]
+    quiz: {
+            type: Array,
+                default: []
+        
+           
+        },
+        answers: {
+            type: Array,
+            default: []
+        },
+        createdAt:{
+            type:Date,
+            default:Date.now
+        }
     
+
 
 
 })
@@ -124,24 +95,34 @@ subjectSchema.methods.addQuestions = async function (question, ans) {
 subjectSchema.methods.addNotes = async function (tname, desc) {
     try {
 
+
+
+      
         this.notes = this.notes.concat({ tname, desc });
         // this.questions = this.questions.concat({ question, ans });
 
         await this.save();
-        return this.questions;
+        // return this.questions;
 
     } catch (error) {
         console.log(error);
     }
 }
-subjectSchema.methods.addAnswer = async function (questionText,answerText1, isCorrect1, answerText2, isCorrect2, answerText3, isCorrect3, answerText4, isCorrect4) {
+
+
+subjectSchema.methods.addQuiz = async function ({quiz,question,Options, answers}) {
     try {
 
-        this.answerOptions = this.mcqText.mcq.answerOptions.concat({ answerText1, isCorrect1, answerText2, isCorrect2, answerText3, isCorrect3, answerText4, isCorrect4 });
-        this.questionTe = this.mcqText.mcq.concat({ questionText });
+       this.quiz = this.quiz.concat(quiz);
 
+       this.answers =this.answers.concat(answers);
+       
+       console.log(this.quiz)
+        console.log(this.answers);
+
+  
         await this.save();
-        return this.answerOptions;
+        return this.quiz;
 
     } catch (error) {
         console.log(error);

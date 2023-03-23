@@ -242,14 +242,16 @@ const MediaView = () => {
 
                                 <div className="mr-84 hidden lg:flex items-center ml-auto">
                                     <div className="tags mr-32"></div>
-                                    <div className='  text-center fw-bold d-flex justify-content-around' >
+                                    <div className='  text-center fw-bold d-flex justify-content-around gap-1' >
                                    
                                    {sEnrolled ?  <input type="submit" name="signup" id="signup" className='text-center btn btn-success'
                 value="Enrolled" disabled/> :<input type="submit" name="signup" id="signup" className='text-center btn btn-success'
                 value="Enroll To Course" onClick={EnrollSub} />
                                    }
-                                   {sEnrolled ?  '' :''
+                                   {sEnrolled ?  <Link type="submit" name="signup" id="signup" className='text-center btn btn-success'
+                value="Start Quiz" to={'/startquiz'} >Play The Quiz</Link>  :''
                                    }
+                                  
                                     </div>
 
                                 </div>

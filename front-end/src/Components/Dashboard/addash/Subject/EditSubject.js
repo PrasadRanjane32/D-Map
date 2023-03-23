@@ -4,10 +4,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
 import { notifyToast } from "../../../../Toastify/notifyToast";
 import '../../../SubRegister/SubReg.css'
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemHeading,
+    AccordionItemButton,
+    AccordionItemPanel,
+} from 'react-accessible-accordion';
+import 'react-accessible-accordion/dist/fancy-example.css';
+
+
 
 const EditSubject = () => {
     const navigate = useNavigate();
-    const [subjectData, setsubjectData] = useState({ _id: '', subjectname: '', icon: '', link: '', about: '',notes:'',questions:'', tname: '', desc: '', type: '', question: '', ans: '' , vlink: ''});
+    const [quizData, setQuizData] = useState({ question: '', Options: '', answerText1: '', answerText2: '', answerText3: '', answerText4: '', isCorrect: '' });
+
+    const [subjectData, setsubjectData] = useState({ _id: '', subjectname: '', icon: '', link: '', about: '', notes: '', questions: '', tname: '', desc: '', type: '', question: '', ans: '', vlink: '' });
     let name, value;
     const [tname, setTname] = useState('');
     const [desc, setDesc] = useState('');
@@ -15,13 +27,46 @@ const EditSubject = () => {
     const [subid, setSubid] = useState('');
 
 
+    const handleInputsq = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setQuizData({ ...quizData, [name]: value });
+    }
+    const AddQuiz = async (e) => {
+        e.preventDefault();
+        const { question, answerText1, answerText2, answerText3, answerText4, isCorrect } = quizData;
+      
+        const res = await fetch("/insertquestions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                subpassid,
+                quiz: [{
+                    question,
+                    Options: [answerText1, answerText2, answerText3, answerText4]
+                }
+                ],
+                answers: [isCorrect]
+            })
+        })
+        if ((await res).status === 201) {
+          
+            window.location.reload(false);
+            notifyToast("Subject quiz Inserted", "success");
+            setQuizData('');
+        } else {
+            notifyToast("Subject quiz unable to Inserted", "error");
+        }
+    };
 
     const subpassid = subjectData._id;
     const handleInputs = (e) => {
         name = e.target.name;
         value = e.target.value;
         setsubjectData({ ...subjectData, [name]: value })
-        console.log(subjectData);
+        // console.log(subjectData);
 
     }
 
@@ -34,7 +79,6 @@ const EditSubject = () => {
             about,
             link,
             type,
-          
             vlink,
             tname,
             desc,
@@ -90,10 +134,11 @@ const EditSubject = () => {
 
             const data = await res.json();
             console.log(data);
-       
-            setsubjectData({...subjectData,_id: data._id,subjectname: data.subjectname,icon: data.icon,link: data.link,about: data.about,type: data.type,vlink: data.vlink,notes:data.notes,questions:data.questions,tname: data.tname,desc: data.desc,question: data.question,ans: data.ans
+
+            setsubjectData({
+                ...subjectData, _id: data._id, subjectname: data.subjectname, icon: data.icon, link: data.link, about: data.about, type: data.type, vlink: data.vlink, notes: data.notes, questions: data.questions, tname: data.tname, desc: data.desc, question: data.question, ans: data.ans
             });
-          
+
 
 
             if (data !== undefined) {
@@ -113,7 +158,7 @@ const EditSubject = () => {
         }
     }
 
-   
+
     const Updatesubd = async (e) => {
         e.preventDefault();
 
@@ -132,16 +177,16 @@ const EditSubject = () => {
             notifyToast("Subject Notes Inserted", "success");
             setTname('');
             setDesc('');
-        }else{
+        } else {
             notifyToast("Subject Notes unable to Inserted", "error");
         }
     };
-   
-    const [question, setQuestion] =useState('');
-    const [ans, setAns] = useState('');
-    const subQuiid =subjectData._id;
 
-    const  UpdateQui = async (e) => {
+    const [question, setQuestion] = useState('');
+    const [ans, setAns] = useState('');
+    const subQuiid = subjectData._id;
+
+    const UpdateQui = async (e) => {
         e.preventDefault();
 
         const res = await fetch("/upsubintque", {
@@ -154,10 +199,11 @@ const EditSubject = () => {
                 subQuiid, question, ans
             })
         })
-        if((await res).status === 201){
+        if ((await res).status === 201) {
             notifyToast("Subject Questions & Answer Inserted", "success");
+            
 
-        }else{
+        } else {
             notifyToast("Subject Questions & Answer unable to Inserted", "error");
 
         }
@@ -166,25 +212,25 @@ const EditSubject = () => {
 
     useEffect(() => {
         passSub();
-       
+
 
     }, []);
-   
+
 
     return (
         <div className='body'>
-            <div className='signin'>
-            <div className='back col-md-2'>
-                <Link to='/SubjectDashBoard'>
+            <div className='signin '>
+                <div className='back col-md-2'>
+                    <Link to='/SubjectDashBoard'>
 
-                  <h2 className='btn '>
-                    <i class="bi bi-box-arrow-left"></i>
-                    Back
-                  </h2>
-                </Link>
-              </div>
+                        <h2 className='btn '>
+                            <i class="bi bi-box-arrow-left"></i>
+                            Back
+                        </h2>
+                    </Link>
+                </div>
 
-                <div className="subreg ">
+                <div className="subreg">
                     <div className="container main-wrap mb-5">
                         <div className='row  d-flex align-items-center justify-content-center '>
 
@@ -234,76 +280,224 @@ const EditSubject = () => {
                                         placeholder="Your Link of Page" className='w-100 form-control border-0 border-bottom border-info' />
                                 </div>
                                 <hr />
-                                <div className='mt-3 '>
+                                <div className='text-uppercase ' style={{fontSize:"1.55em"}}>
+                                    <Accordion className='mt-2' allowZeroExpanded>
+                                        <AccordionItem >
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton >
+                                                    Notes
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel>
+                                             
+                                                    <div className='form-input '>
 
-                                    <div className='col-md-6 text-center'>
 
 
+                                                        <input type="text" name="tname" id="tname" autocomplete="off"
+                                                            value={tname}
+                                                            onChange={(e) => setTname(e.target.value)}
+                                                            placeholder="Topic Name" className='w-100 form-control border-0 border-bottom border-info' />
+                                                    </div>
+                                                    <div className='form-input '>
+
+                                                        <input type="text" name="description" id="desc" autocomplete="off"
+                                                            value={desc}
+                                                            onChange={(e) => setDesc(e.target.value)}
+                                                            placeholder="Description" className='w-100 form-control border-0 border-bottom border-info' />
+                                                    </div>
+                                                    <div className='form-group'>
+                                                        <div className='text-center fw-bold'>
+                                                            <input type="submit" name="signin" id="signin" className='text-center btn btn-success'
+                                                                value="Add Notes"
+                                                                onClick={Updatesubd}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                               
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+
+
+
+
+
+                                </div>
+
+
+
+                                <hr />
+                                <div className='text-uppercase ' style={{fontSize:"1.55em"}}>
+
+
+
+
+                                <Accordion className='mt-2'  allowZeroExpanded>
+                                                                        <AccordionItem >
+                                                                            <AccordionItemHeading>
+                                                                                <AccordionItemButton>
+                                                                                  
+
+                                    Interview Questions
+                                                                                </AccordionItemButton>
+                                                                            </AccordionItemHeading>
+                                                                            <AccordionItemPanel>
+                                                                              
+
+                                    <div className='form-input mb-3'>
+
+
+
+                                        <input type="text" name="question" id="question" autocomplete="off"
+                                            value={question}
+                                            onChange={(e) => setQuestion(e.target.value)}
+                                            placeholder="Question" className='w-100 form-control border-0 border-bottom border-info' />
                                     </div>
-                                  
-                                    
-<h3>Notes</h3>
-                                        <div className='form-input '>
+                                    <div className='form-input mb-3'>
 
-
-
-                                            <input type="text" name="tname" id="tname" autocomplete="off"
-                                                value={tname}
-                                                onChange={(e) => setTname(e.target.value)}
-                                                placeholder="Topic Name" className='w-100 form-control border-0 border-bottom border-info' />
+                                        <input type="text" name="ans" id="ans" autocomplete="off"
+                                            value={ans}
+                                            onChange={(e) => setAns(e.target.value)}
+                                            placeholder="Provide Answer" className='w-100 form-control border-0 border-bottom border-info' />
+                                    </div>
+                                    <div className='form-group'>
+                                        <div className='text-center fw-bold d-flex justify-content-around'>
+                                            <input type="submit" name="signin" id="signin" className='text-center btn btn-success'
+                                                value="Add Questions & Ans"
+                                                onClick={UpdateQui}
+                                            />
                                         </div>
-                                        <div className='form-input '>
+                                    </div>
 
-                                            <input type="text" name="description" id="desc" autocomplete="off"
-                                                value={desc}
-                                                onChange={(e) => setDesc(e.target.value)}
-                                                placeholder="Description" className='w-100 form-control border-0 border-bottom border-info' />
-                                        </div>
-                                        <div className='form-group'>
-                                            <div className='text-center fw-bold'>
-                                                <input type="submit" name="signin" id="signin" className='text-center btn btn-success'
-                                                    value="Add Notes"
-                                                    onClick={Updatesubd}
-                                                />
-                                            </div>
-                                        </div>
-                                  
+                                                                            </AccordionItemPanel>
+                                                                            </AccordionItem>
+                                                                    </Accordion>
+
+
+
+
+
                                 </div>
                                 <hr />
-                                <div className='mt-3 '>
+                                <div className='text-uppercase ' style={{fontSize:"1.55em"}}>
 
-                                        <h3>Interview Questions</h3>
-                                 
+                                <Accordion className='mt-2'  allowZeroExpanded>
+                                                                        <AccordionItem >
+                                                                            <AccordionItemHeading>
+                                                                                <AccordionItemButton>
+                                                                                   
+                                        Add Quiz Question & Answer
+                                                                                </AccordionItemButton>
+                                                                            </AccordionItemHeading>
+                                                                            <AccordionItemPanel>
+                                                                               
 
-                                      
-
-                                        <div className='form-input mb-3'>
+                                    <div className=' mb-3'>
 
 
+                                        <input type="text" name="question" id="question" autocomplete="off"
+                                            value={quizData.question}
+                                            onChange={handleInputsq}
+                                            placeholder="Question"
+                                            className='w-100  form-control border-0 border-bottom border-info' />
+                                    </div>
+                                    <div className='form-input mb-3 row '>
+                                        <div className='col-md-1'>
 
-                                            <input type="text" name="question" id="question" autocomplete="off"
-                                                value={question}
-                                                onChange={(e) => setQuestion(e.target.value)}
-                                                placeholder="Question" className='w-100 form-control border-0 border-bottom border-info' />
+                                            <input
+                                                type="radio"
+                                                id="isCorrect"
+                                                name="isCorrect"
+                                                value={0}
+                                                onChange={handleInputsq}
+                                            />
                                         </div>
-                                        <div className='form-input mb-3'>
+                                        <div className='col-md-11'>
+                                            <input type="text" name="answerText1" id="answerText1" autocomplete="off"
+                                                value={quizData.answerText1}
+                                                onChange={handleInputsq}
+                                                placeholder="Add Answer"
+                                                className='w-100 form-control border-0 border-bottom border-info col-md-10' />
+                                        </div>
 
-                                            <input type="text" name="ans" id="ans" autocomplete="off"
-                                                value={ans}
-                                                onChange={(e) => setAns(e.target.value)}
-                                                placeholder="Provide Answer" className='w-100 form-control border-0 border-bottom border-info' />
+                                    </div>
+
+                                    <div className='form-input mb-3 row '>
+                                        <div className='col-md-1'>
+                                            <input
+                                                type="radio"
+                                                id="isCorrect"
+                                                name="isCorrect"
+                                                value={1}
+                                                onChange={handleInputsq}
+                                            />
                                         </div>
-                                        <div className='form-group'>
-                                            <div className='text-center fw-bold d-flex justify-content-around'>
-                                                <input type="submit" name="signin" id="signin" className='text-center btn btn-success'
-                                                    value="Add Questions & Ans"
-                                                    onClick={UpdateQui}
-                                                />
-                                            </div>
+                                        <div className='col-md-11'>
+                                            <input type="text" name="answerText2" id="answerText2" autocomplete="off"
+                                                value={quizData.answerText2}
+                                                onChange={handleInputsq}
+                                                placeholder="Add Answer" className='w-100 form-control border-0 border-bottom border-info' />
+
                                         </div>
-                                  
+                                    </div>
+
+                                    <div className='form-input mb-3 row '>
+                                        <div className='col-md-1'>
+                                            <input
+                                                type="radio"
+                                                id="isCorrect"
+                                                name="isCorrect"
+                                                value={2}
+                                                onChange={handleInputsq}
+                                            />
+                                        </div>
+
+                                        <div className='col-md-11'>
+                                            <input type="text" name="answerText3" id="answerText3" autocomplete="off"
+                                                value={quizData.answerText3}
+                                                onChange={handleInputsq}
+                                                placeholder="Add Answer" className='w-100 form-control border-0 border-bottom border-info' />
+
+                                        </div>
+                                    </div>
+
+                                    <div className='form-input mb-3 row '>
+
+                                        <div className='col-md-1'>
+                                            <input
+                                                type="radio"
+                                                id="isCorrect"
+                                                name="isCorrect"
+                                                value={3}
+                                                onChange={handleInputsq}
+                                            />
+                                        </div>
+
+                                        <div className='col-md-11'>
+                                            <input type="text" name="answerText4" id="answerText4" autocomplete="off"
+                                                value={quizData.answerText4}
+                                                onChange={handleInputsq}
+                                                placeholder="Add Answer" className='w-100 form-control border-0 border-bottom border-info' />
+                                        </div>
+                                    </div>
+
+                                    <div className='form-group'>
+                                        <div className='text-center fw-bold'>
+                                            <input type="submit" name="signin" id="signin" className='text-center btn btn-success'
+                                                value="Add Quiz"
+                                                onClick={AddQuiz}
+                                            />
+                                        </div>
+                                    </div>
+
+                                                                            </AccordionItemPanel>
+                                                                            </AccordionItem>
+                                                                    </Accordion>
+
                                 </div>
-                               
+                                <hr />
+
                                 <div className='form-group'>
                                     <div className='text-center fw-bold d-flex justify-content-around'>
                                         <input type="submit" name="subreg" id="subreg" className='text-center btn btn-success'

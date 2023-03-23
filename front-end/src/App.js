@@ -10,13 +10,9 @@ import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import Logout from './Components/LogOut/Logout'
 import Erropage from './Components/ErrorPage/Erropage'
-import ReactQuiz from './Components/Quiz/ReactQuiz.js'
 import { initialState, reducer } from './reducer/UseReducer'
 import LangPage from './Components/Languages/LangPage'
-import JavaQuiz from './Components/Quiz/JavaQuiz'
-import HtmlQuiz from './Components/Quiz/HtmlQuiz'
-import CssQuiz from './Components/Quiz/CssQuiz'
-import JsQuiz from './Components/Quiz/JsQuiz'
+
 import MediaView from './Components/pages/MediaView'
 import SubjectReg from './Components/SubRegister/SubReg'
 import AddQuiz from './Components/SubRegister/AddQuiz'
@@ -33,6 +29,10 @@ import AdmDash from './Components/Dashboard/addash/AdmDash'
 import EditSubject from './Components/Dashboard/addash/Subject/EditSubject'
 import FeedDash from './Components/Dashboard/addash/Subject/FeedDash'
 import Loading from './Components/LoadingPage/Loading'
+import Main from './Components/Quiz/Main'
+import Quiz from './Components/Quiz/Quiz'
+import Result from './Components/Quiz/Result'
+import { CheckUserExist } from './Components/Quiz/helper/helper'
 
 
 
@@ -66,11 +66,11 @@ const App = () => {
             <Route path='/Login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
             <Route path='/Logout' element={<Logout />} />
-            <Route path='/reactjs' element={<ReactQuiz />} />
-            <Route path='/java' element={<JavaQuiz />} />
-            <Route path='/html' element={<HtmlQuiz />} />
-            <Route path='/css' element={<CssQuiz />} />
-            <Route path='/js' element={<JsQuiz />} />
+           
+
+            <Route path='/startquiz' element={ <Main/>}/>
+            
+            <Route path='/onquiz' element={<CheckUserExist><Quiz/></CheckUserExist>}/>
             <Route path='/subjectd' element={<MediaView />} />
             <Route path='/SubjectReg' element={<SubjectReg />} />
             <Route path='/UpdateSub' element={<UpdateSub />} />
@@ -85,7 +85,7 @@ const App = () => {
             <Route path='/AllSubjectDash' element={<AllSubjectDash />} />
             <Route path='/FeedbackDashBoard' element={<FeedDash/>}/>
             <Route path='/loadings' element={<Loading/>}/>
-            
+            <Route path='/result' element={<Result/>}/>
          
 
             <Route path='/EditProfile' element={<UpUserPro />} />

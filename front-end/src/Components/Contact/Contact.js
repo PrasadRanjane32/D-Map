@@ -3,6 +3,8 @@ import './Contact.css'
 import contact from '../../Assets/Images/contact.png'
 import { useNavigate } from 'react-router-dom'
 import Loadings from '../LoadingPage/Loading'
+import "react-toastify/dist/ReactToastify.css";
+import { notifyToast } from "../../Toastify/notifyToast";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -70,9 +72,11 @@ const Contact = () => {
     const data = await res.json();
     if (!data) {
       console.log("message Not Send");
+      notifyToast("Your message Not Send SuccessFully", "error");
 
     } else {
-      alert("Message Send");
+     
+      notifyToast("Your Message Send SuccessFully", "success");
       setUserData({ ...userData, message: "" });
     }
 

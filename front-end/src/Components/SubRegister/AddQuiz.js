@@ -23,7 +23,8 @@ const UpdateSub = () => {
             },
             body: JSON.stringify({
 
-                subpassid,questionText, answerText1, answerText2, answerText3, answerText4, isCorrect1, isCorrect2, isCorrect3, isCorrect4
+                subpassid,
+                questionText, answerText1, answerText2, answerText3, answerText4, isCorrect1, isCorrect2, isCorrect3, isCorrect4
             })
         })
         if ((await res).status === 201) {
